@@ -1,7 +1,9 @@
 //! Types used in documentation examples.
 
+#[cfg(not(target_arch = "wasm32"))]
+use crate::library::RootModule;
+
 use crate::{
-    library::RootModule,
     sabi_types::VersionStrings,
     std_types::{ROption, RStr, RString},
     StableAbi,
@@ -27,6 +29,7 @@ pub struct Module {
     pub third: usize,
 }
 
+#[cfg(not(target_arch = "wasm32"))]
 impl RootModule for Module_Ref {
     crate::declare_root_module_statics! {Module_Ref}
     const BASE_NAME: &'static str = "example_root_module";

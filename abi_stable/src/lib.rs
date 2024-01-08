@@ -269,6 +269,7 @@ pub mod abi_stability;
 pub mod erased_types;
 pub mod external_types;
 #[macro_use]
+#[cfg(not(target_arch = "wasm32"))]
 pub mod library;
 pub mod inline_storage;
 pub mod marker_type;
@@ -297,6 +298,7 @@ pub mod sabi_trait;
 
 /// The header used to identify the version number of abi_stable
 /// that a dynamic libraries uses.
+#[cfg(not(target_arch = "wasm32"))]
 pub static LIB_HEADER: library::AbiHeader = library::AbiHeader::VALUE;
 
 /// Miscelaneous items re-exported from core_extensions.
